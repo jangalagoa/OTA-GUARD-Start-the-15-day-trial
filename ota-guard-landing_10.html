@@ -1,0 +1,909 @@
+<!-- Google Analytics (GA4) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+
+<style>
+  :root{
+    --midnight:#0E1A2B;
+    --midnight-2:#16283F;
+    --midnight-3:#1F3552;
+    --paper:#F6F1E7;
+    --paper-2:#EDE6D6;
+    --ink:#1B2430;
+    --gold:#CBA135;
+    --gold-soft:#E3C878;
+    --alert:#FF7A59;
+    --ok:#5EB08C;
+    --muted:#7E93AC;
+    --muted-2:#8C8676;
+    --serif: "Fraunces", Georgia, serif;
+    --sans: "Inter", -apple-system, sans-serif;
+    --mono: "IBM Plex Mono", monospace;
+  }
+
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+
+  .ota{
+    font-family: var(--sans);
+    color: var(--ink);
+    background: var(--paper);
+    line-height: 1.5;
+    overflow-x: hidden;
+  }
+
+  .ota a{ color:inherit; }
+
+  /* ===== Layout helpers ===== */
+  .ota__section{
+    padding: 96px 24px;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+  @media (max-width: 720px){
+    .ota__section{ padding: 64px 20px; }
+  }
+
+  .ota__eyebrow{
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .ota__eyebrow::before{
+    content:"";
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--gold);
+    box-shadow: 0 0 0 0 rgba(203,161,53,0.6);
+    animation: ota-pulse 2.4s infinite;
+  }
+  @media (prefers-reduced-motion: reduce){ .ota__eyebrow::before{ animation:none; } }
+
+  @keyframes ota-pulse{
+    0%{ box-shadow: 0 0 0 0 rgba(203,161,53,0.55); }
+    70%{ box-shadow: 0 0 0 8px rgba(203,161,53,0); }
+    100%{ box-shadow: 0 0 0 0 rgba(203,161,53,0); }
+  }
+
+  .ota h1, .ota h2, .ota h3{
+    font-family: var(--serif);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+
+  /* ===== HERO ===== */
+  .ota__hero{
+    background: radial-gradient(120% 100% at 15% 0%, #1C3050 0%, var(--midnight) 55%, #0A1320 100%);
+    color: var(--paper);
+    padding: 88px 24px 100px;
+    position: relative;
+  }
+  .ota__hero-inner{
+    max-width: 1080px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 56px;
+    align-items: center;
+  }
+  @media (max-width: 880px){
+    .ota__hero-inner{ grid-template-columns: 1fr; gap: 48px; }
+  }
+  .ota__hero h1{
+    color: var(--paper);
+    font-size: clamp(2.1rem, 4.4vw, 3.4rem);
+    line-height: 1.12;
+    margin-bottom: 22px;
+  }
+  .ota__hero h1 em{
+    font-style: italic;
+    color: var(--gold-soft);
+  }
+  .ota__hero p{
+    color: var(--muted);
+    font-size: 1.05rem;
+    max-width: 480px;
+    margin-bottom: 32px;
+  }
+  .ota__cta-row{
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .ota__btn{
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 14px 26px;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+  }
+  .ota__btn:hover{ transform: translateY(-1px); }
+  .ota__btn--primary{
+    background: var(--gold);
+    color: var(--midnight);
+  }
+  .ota__btn--primary:hover{ background: var(--gold-soft); }
+  .ota__btn--ghost{
+    background: transparent;
+    border-color: rgba(246,241,231,0.28);
+    color: var(--paper);
+  }
+  .ota__btn--ghost:hover{ border-color: var(--gold-soft); color: var(--gold-soft); }
+
+  /* ===== Night Desk mock (signature element) ===== */
+  .ota__desk{
+    background: var(--midnight-2);
+    border: 1px solid var(--midnight-3);
+    border-radius: 14px;
+    padding: 22px;
+    box-shadow: 0 30px 60px -25px rgba(0,0,0,0.6);
+  }
+  .ota__desk-head{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 16px;
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+  }
+  .ota__desk-head strong{
+    color: var(--paper);
+    font-weight: 500;
+  }
+  .ota__desk-cols{
+    display: grid;
+    grid-template-columns: 0.9fr 1fr 0.9fr 0.9fr 1fr;
+    gap: 6px;
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0 14px 10px;
+    border-bottom: 1px solid var(--midnight-3);
+  }
+  .ota__desk-row{
+    display: grid;
+    grid-template-columns: 0.9fr 1fr 0.9fr 0.9fr 1fr;
+    gap: 6px;
+    align-items: center;
+    padding: 12px 14px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    font-family: var(--mono);
+    font-size: 0.82rem;
+  }
+  .ota__desk-row:last-child{ border-bottom: none; }
+  .ota__ota-name{ color: var(--paper); font-weight: 500; }
+  .ota__room-type{ color: var(--muted); font-size: 0.75rem; }
+  .ota__rate{ color: var(--muted); }
+  .ota__rate--you{ color: var(--paper); font-weight: 500; }
+  .ota__rate--loss{ color: var(--alert); font-weight: 500; }
+  .ota__rate--fixed{ color: var(--ok); font-weight: 500; }
+  .ota__status{
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 0.74rem;
+    letter-spacing: 0.04em;
+  }
+  .ota__dot{
+    width: 8px; height: 8px; border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .ota__dot--ok{ background: var(--ok); }
+  .ota__dot--alert{ background: var(--alert); animation: ota-blink 1.1s infinite; }
+  .ota__dot--ok-new{ background: var(--ok); }
+  @keyframes ota-blink{
+    0%, 100%{ opacity:1; } 50%{ opacity:0.25; }
+  }
+  @media (prefers-reduced-motion: reduce){ .ota__dot--alert{ animation:none; } }
+
+  .ota__status--alert{ color: var(--alert); }
+  .ota__status--ok{ color: var(--ok); }
+  .ota__status--idle{ color: var(--muted); }
+
+  .ota__desk-foot{
+    margin-top: 14px;
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--muted);
+    text-align: right;
+  }
+
+  /* ===== Problem section ===== */
+  .ota__problem{ text-align: center; }
+  .ota__problem h2{
+    font-size: clamp(1.7rem, 3.2vw, 2.4rem);
+    margin-bottom: 14px;
+  }
+  .ota__problem > p{
+    color: var(--muted-2);
+    max-width: 620px;
+    margin: 0 auto 56px;
+    font-size: 1.05rem;
+  }
+  .ota__blocks{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    text-align: left;
+  }
+  @media (max-width: 720px){ .ota__blocks{ grid-template-columns: 1fr; } .ota__block--center{ max-width: 100%; } }
+  .ota__block--center{
+    grid-column: 1 / -1;
+    max-width: calc(50% - 12px);
+    margin: 0 auto;
+  }
+  .ota__block{
+    background: var(--midnight);
+    border: 1px solid var(--midnight-3);
+    border-radius: 14px;
+    padding: 32px;
+    color: var(--paper);
+  }
+  .ota__block h3{
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    color: var(--gold-soft);
+    margin-bottom: 12px;
+  }
+  .ota__block p{
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+  .ota__block--accent{
+    background: linear-gradient(135deg, var(--midnight) 0%, #1C3050 100%);
+    border-color: var(--gold);
+    grid-column: 1 / -1;
+  }
+  .ota__block--accent h3{
+    color: var(--gold);
+  }
+  .ota__block--accent p{
+    color: var(--paper-2);
+    max-width: 680px;
+  }
+
+  /* ===== How it works ===== */
+  .ota__how{ background: var(--paper-2); }
+  .ota__how-grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    margin-top: 48px;
+  }
+  @media (max-width: 820px){ .ota__how-grid{ grid-template-columns: 1fr; } }
+  .ota__how-card{
+    background: var(--paper);
+    border: 1px solid #E2D9C6;
+    border-radius: 12px;
+    padding: 28px;
+  }
+  .ota__how-step{
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--gold);
+    letter-spacing: 0.12em;
+    margin-bottom: 14px;
+  }
+  .ota__how-card h3{
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+  }
+  .ota__how-card p{
+    color: var(--muted-2);
+    font-size: 0.94rem;
+  }
+
+  /* ===== Features ===== */
+  .ota__features h2{
+    font-size: clamp(1.7rem, 3.2vw, 2.4rem);
+    margin-bottom: 48px;
+    text-align: center;
+  }
+  .ota__feat-grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: #E2D9C6;
+    border: 1px solid #E2D9C6;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  @media (max-width: 820px){ .ota__feat-grid{ grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px){ .ota__feat-grid{ grid-template-columns: 1fr; } }
+  .ota__feat{
+    background: var(--paper);
+    padding: 28px 24px;
+  }
+  .ota__feat h3{
+    font-size: 1.02rem;
+    font-family: var(--sans);
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .ota__feat p{
+    color: var(--muted-2);
+    font-size: 0.9rem;
+  }
+
+  /* ===== Maintenance ===== */
+  .ota__maint{
+    background: var(--midnight);
+    color: var(--paper);
+  }
+  .ota__maint-inner{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+  @media (max-width: 820px){ .ota__maint-inner{ grid-template-columns: 1fr; } }
+  .ota__maint h2{ color: var(--paper); font-size: clamp(1.6rem, 3vw, 2.2rem); margin-bottom: 16px; }
+  .ota__maint p{ color: var(--muted); font-size: 1rem; margin-bottom: 14px; }
+  .ota__maint-list{
+    list-style: none;
+    font-family: var(--mono);
+    font-size: 0.88rem;
+    color: var(--paper);
+  }
+  .ota__maint-list li{
+    padding: 12px 0;
+    border-top: 1px solid var(--midnight-3);
+    display: flex;
+    gap: 12px;
+  }
+  .ota__maint-list li:first-child{ border-top: none; }
+  .ota__maint-list span{ color: var(--gold); }
+
+  /* ===== Pricing ===== */
+  .ota__pricing h2{
+    font-size: clamp(1.7rem, 3.2vw, 2.4rem);
+    text-align: center;
+    margin-bottom: 12px;
+  }
+  .ota__pricing > p{
+    text-align: center;
+    color: var(--muted-2);
+    max-width: 540px;
+    margin: 0 auto 48px;
+  }
+  .ota__price-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  @media (max-width: 720px){ .ota__price-grid{ grid-template-columns: 1fr; } }
+  .ota__price-card{
+    border: 1px solid #E2D9C6;
+    border-radius: 14px;
+    padding: 32px;
+    background: var(--paper);
+  }
+  .ota__price-card--founder{
+    border-color: var(--gold);
+    background: linear-gradient(160deg, #FBF6EA 0%, var(--paper) 60%);
+    position: relative;
+  }
+  .ota__price-tag{
+    font-family: var(--mono);
+    font-size: 0.74rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 14px;
+  }
+  .ota__price-card h3{ font-size: 1.3rem; margin-bottom: 6px; }
+  .ota__price-amount{
+    font-family: var(--serif);
+    font-size: 2.4rem;
+    font-weight: 700;
+    margin: 14px 0 4px;
+  }
+  .ota__price-amount span{
+    font-family: var(--sans);
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--muted-2);
+  }
+  .ota__price-sub{ color: var(--muted-2); font-size: 0.86rem; margin-bottom: 22px; }
+  .ota__price-list{ list-style: none; font-size: 0.92rem; }
+  .ota__price-list li{
+    padding: 8px 0;
+    border-top: 1px solid #EDE6D6;
+    color: var(--ink);
+  }
+  .ota__price-list li:first-child{ border-top: none; }
+
+  .ota__compare{
+    margin-top: 32px;
+    text-align: center;
+    font-family: var(--mono);
+    font-size: 0.86rem;
+    color: var(--muted-2);
+    border-top: 1px dashed #D8CDB6;
+    padding-top: 28px;
+  }
+  .ota__compare strong{ color: var(--ink); }
+
+  .ota__countdown{
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin-top: 18px;
+  }
+  .ota__countdown-unit{
+    text-align: center;
+  }
+  .ota__countdown-num{
+    font-family: var(--mono);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--gold);
+    background: var(--midnight);
+    border-radius: 8px;
+    padding: 8px 14px;
+    min-width: 56px;
+    display: block;
+  }
+  .ota__countdown-label{
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    color: var(--muted-2);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-top: 6px;
+  }
+  .ota__slots{
+    font-family: var(--mono);
+    font-size: 0.92rem;
+    color: var(--alert);
+    margin-top: 16px;
+    font-weight: 600;
+  }
+  .ota__slots-bar{
+    width: 100%;
+    height: 6px;
+    background: rgba(255,122,89,0.15);
+    border-radius: 3px;
+    margin-top: 8px;
+    overflow: hidden;
+  }
+  .ota__slots-fill{
+    height: 100%;
+    background: var(--alert);
+    border-radius: 3px;
+    transition: width 0.3s ease;
+  }
+  .ota__competitors{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-top: 24px;
+  }
+  @media (max-width: 560px){ .ota__competitors{ grid-template-columns: 1fr; } }
+  .ota__comp-item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    padding: 10px 14px;
+    background: rgba(0,0,0,0.03);
+    border-radius: 8px;
+  }
+  .ota__comp-name{ color: var(--muted-2); }
+  .ota__comp-price{ color: var(--alert); font-weight: 600; }
+
+  /* ===== Final CTA ===== */
+  .ota__final{
+    background: var(--midnight);
+    color: var(--paper);
+    text-align: center;
+    padding: 96px 24px;
+  }
+  .ota__final h2{
+    color: var(--paper);
+    font-size: clamp(1.8rem, 3.6vw, 2.6rem);
+    margin-bottom: 16px;
+  }
+  .ota__final p{
+    color: var(--muted);
+    margin-bottom: 32px;
+  }
+  .ota__final .ota__cta-row{ justify-content: center; }
+
+  /* ===== Email gate ===== */
+  .ota__gate{
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 18px;
+  }
+  .ota__gate-input{
+    font-family: var(--sans);
+    font-size: 0.95rem;
+    padding: 14px 18px;
+    border-radius: 8px;
+    border: 1px solid var(--midnight-3);
+    background: var(--midnight-2);
+    color: var(--paper);
+    min-width: 260px;
+  }
+  .ota__gate-input::placeholder{ color: var(--muted); }
+  .ota__gate-input:focus{
+    outline: 2px solid var(--gold);
+    outline-offset: 1px;
+  }
+  .ota__gate-note{
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-bottom: 32px;
+  }
+  .ota__gate-success p{
+    color: var(--ok);
+    font-size: 0.95rem;
+    margin-bottom: 14px;
+  }
+  .ota__gate-error{
+    color: var(--alert);
+    font-size: 0.85rem;
+    margin-top: 10px;
+    display: none;
+  }
+
+  /* ===== Footer ===== */
+  .ota__footer{
+    background: #0A1320;
+    color: var(--muted);
+    padding: 32px 24px;
+    font-size: 0.82rem;
+  }
+  .ota__footer-inner{
+    max-width: 1080px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .ota__footer strong{ color: var(--paper); }
+</style>
+
+<div class="ota">
+
+  <!-- HERO -->
+  <section class="ota__hero">
+    <div class="ota__hero-inner">
+      <div>
+        <div class="ota__eyebrow">OTA Guard — 24/7 rate monitoring</div>
+        <h1>You set the price.<br><em>Make sure it stays.</em></h1>
+        <p>
+          Stop losing money on unprofitable bookings. OTAs adjust your rates without warning — take back control.
+          OTA Guard monitors every platform, detects undercuts and corrects them automatically, 24/7.
+        </p>
+        <div class="ota__cta-row">
+          <a href="#download" class="ota__btn ota__btn--primary">Download free 15-day trial</a>
+          <a href="#pricing" class="ota__btn ota__btn--ghost">See pricing</a>
+        </div>
+      </div>
+
+      <div class="ota__desk">
+        <div class="ota__desk-head">
+          <strong>Rate Monitor</strong>
+          <span id="ota-clock">last scan: just now</span>
+        </div>
+        <div class="ota__desk-cols">
+          <span>OTA</span><span>Room</span><span>Your rate</span><span>Market</span><span>OTA Guard</span>
+        </div>
+        <div class="ota__desk-row">
+          <span class="ota__ota-name">OTA 1</span>
+          <span class="ota__room-type">Deluxe</span>
+          <span class="ota__rate--you">₹4,457</span>
+          <span class="ota__rate--loss">₹3,890</span>
+          <span class="ota__rate--fixed">₹4,320</span>
+        </div>
+        <div class="ota__desk-row">
+          <span class="ota__ota-name">OTA 2</span>
+          <span class="ota__room-type">Standard</span>
+          <span class="ota__rate--you">₹3,215</span>
+          <span class="ota__rate--loss">₹2,750</span>
+          <span class="ota__rate--fixed">₹3,120</span>
+        </div>
+        <div class="ota__desk-row">
+          <span class="ota__ota-name">OTA 3</span>
+          <span class="ota__room-type">Suite</span>
+          <span class="ota__rate--you">₹6,780</span>
+          <span class="ota__rate--loss">₹5,400</span>
+          <span class="ota__rate--fixed">₹6,640</span>
+        </div>
+        <div class="ota__desk-row">
+          <span class="ota__ota-name">OTA 4</span>
+          <span class="ota__room-type">Deluxe</span>
+          <span class="ota__rate--you">₹4,457</span>
+          <span class="ota__rate--loss">₹3,950</span>
+          <span class="ota__rate--fixed">₹4,380</span>
+        </div>
+        <div class="ota__desk-foot" id="ota-desk-foot">monitoring 4 platforms · corrections pushed automatically</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section class="ota__section ota__problem">
+    <h2>OTAs control your room prices — and it's costing you money.</h2>
+    <p>OTAs change your rates silently. By the time you notice, guests have already booked at a price you never approved.</p>
+    <div class="ota__blocks">
+      <div class="ota__block">
+        <h3>Their commission, your loss.</h3>
+        <p>OTAs don't respect your floor price. They run promotions you never approved, sell your rooms below cost — and still collect their commission. You honour the booking or face penalties. They win either way.</p>
+      </div>
+      <div class="ota__block">
+        <h3>How much are you really losing?</h3>
+        <p>OTAs set the market price of your rooms behind your back — undercutting you and your competitors at the same time. Every booking at the wrong price is money you'll never recover.</p>
+      </div>
+      <div class="ota__block ota__block--center">
+        <h3>Take back control.</h3>
+        <p>You don't have time to check every OTA every hour. OTA Guard does. No more surprise discounts, no more bookings at a loss — your rooms sell at the price you decided.</p>
+      </div>
+      <div class="ota__block ota__block--accent">
+        <h3>The more hotels take back control, the more the market becomes fair.</h3>
+        <p>Today, a handful of platforms dictate your prices and profit from your work. Every hotel that monitors and corrects its rates weakens that monopoly. OTA Guard isn't just a tool — it's how independent hotels reclaim the market they built.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="ota__how">
+    <div class="ota__section">
+      <h2 style="text-align:center;">Three steps. OTA Guard works for you.</h2>
+      <div class="ota__how-grid">
+        <div class="ota__how-card">
+          <div class="ota__how-step">Scan</div>
+          <h3>Your eyes on every platform.</h3>
+          <p>OTA Guard uses multiple detection methods to collect accurate rate data — even when platforms try to make it difficult. If one method is blocked, the next takes over. No interruption, no manual work.</p>
+        </div>
+        <div class="ota__how-card">
+          <div class="ota__how-step">Compare</div>
+          <h3>Your price vs. their price.</h3>
+          <p>Every rate found is checked against the floor and ceiling you defined. The moment a platform displays a price below your minimum, you know — instantly.</p>
+        </div>
+        <div class="ota__how-card">
+          <div class="ota__how-step">Correct</div>
+          <h3>OTA Guard fixes it. You focus on your guests.</h3>
+          <p>The right rate is pushed directly to your channel manager — automatically, or with your approval first. No more wasted hours checking screens. The software works around the clock so you don't have to.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="ota__section ota__features">
+    <h2>Everything included, nothing extra</h2>
+    <div class="ota__feat-grid">
+      <div class="ota__feat">
+        <h3>Real-time monitoring</h3>
+        <p>All major OTAs monitored on a schedule you control.</p>
+      </div>
+      <div class="ota__feat">
+        <h3>Automatic correction</h3>
+        <p>Rates pushed to your channel manager per OTA — all major platforms supported.</p>
+      </div>
+      <div class="ota__feat">
+        <h3>Floor & ceiling protection</h3>
+        <p>You define your minimum and maximum rate. OTA Guard makes sure no platform goes outside those limits.</p>
+      </div>
+      <div class="ota__feat">
+        <h3>Works silently, 24/7</h3>
+        <p>OTA Guard runs in the background without disrupting your daily operations. Set it once, let it work.</p>
+      </div>
+      <div class="ota__feat">
+        <h3>Multi-platform coverage</h3>
+        <p>Monitor all your OTAs from a single dashboard — one place to see everything.</p>
+      </div>
+      <div class="ota__feat">
+        <h3>Full control, your rules</h3>
+        <p>Automatic or manual correction — you decide how much control you want to keep. Nothing happens without your approval if you prefer it that way.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAINTENANCE -->
+  <section class="ota__maint">
+    <div class="ota__section ota__maint-inner">
+      <div>
+        <h2>OTAs change constantly. OTA Guard keeps up.</h2>
+        <p>
+          OTAs update their platforms regularly — sometimes weekly. A tool that isn't
+          maintained stops working within months. Your license includes continuous updates
+          so OTA Guard stays effective, no matter what changes.
+        </p>
+      </div>
+      <ul class="ota__maint-list">
+        <li><span>01</span> Software updated as OTA platforms evolve</li>
+        <li><span>02</span> Detection methods adapted to stay effective</li>
+        <li><span>03</span> Email + WhatsApp support</li>
+        <li><span>04</span> All updates included for the license period</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="ota__section ota__pricing" id="pricing">
+    <h2>Pricing</h2>
+    <p>One hotel, one machine, one yearly fee. No surprises, no usage limits.</p>
+    <div class="ota__price-grid">
+      <div class="ota__price-card">
+        <div class="ota__price-tag">Standard</div>
+        <h3>Standard License</h3>
+        <div class="ota__price-amount">₹18,000 <span>/ year</span></div>
+        <div class="ota__price-sub">≈ €200 / $215 — per hotel, one machine</div>
+      </div>
+      <div class="ota__price-card ota__price-card--founder">
+        <div class="ota__price-tag">Early bird</div>
+        <h3>Founder License</h3>
+        <div class="ota__price-amount">₹10,000 <span>/ first year</span></div>
+        <div class="ota__price-sub">≈ €110 / $120 — discounted first year, then standard rate</div>
+        <div class="ota__slots"><span id="ota-slots-num">20</span> / 20 spots remaining</div>
+        <div class="ota__slots-bar"><div class="ota__slots-fill" id="ota-slots-fill" style="width:100%"></div></div>
+        <div class="ota__countdown" id="ota-countdown">
+          <div class="ota__countdown-unit"><span class="ota__countdown-num" id="ota-cd-days">--</span><span class="ota__countdown-label">Days</span></div>
+          <div class="ota__countdown-unit"><span class="ota__countdown-num" id="ota-cd-hours">--</span><span class="ota__countdown-label">Hours</span></div>
+          <div class="ota__countdown-unit"><span class="ota__countdown-num" id="ota-cd-mins">--</span><span class="ota__countdown-label">Min</span></div>
+          <div class="ota__countdown-unit"><span class="ota__countdown-num" id="ota-cd-secs">--</span><span class="ota__countdown-label">Sec</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="ota__compare">
+      What competitors charge <strong>per month</strong>:
+      <div class="ota__competitors">
+        <div class="ota__comp-item"><span class="ota__comp-name">Lighthouse (OTA Insight)</span><span class="ota__comp-price">$200–500/month</span></div>
+        <div class="ota__comp-item"><span class="ota__comp-name">RateGain Parity+</span><span class="ota__comp-price">~$150–400/month *</span></div>
+        <div class="ota__comp-item"><span class="ota__comp-name">RoomPriceGenie</span><span class="ota__comp-price">$49–119/month</span></div>
+        <div class="ota__comp-item"><span class="ota__comp-name">Fornova</span><span class="ota__comp-price">~$200–500/month *</span></div>
+      </div>
+      <div style="text-align:center;font-family:var(--mono);font-size:0.72rem;color:var(--muted-2);margin-top:10px;">* estimated — custom quote required</div>
+      OTA Guard covers a <strong>full year</strong> for less than most tools charge for <strong>one month</strong>.
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="ota__final" id="download">
+    <h2>Start the 15-day trial</h2>
+    <p>Full features, no payment required. Leave your email and we'll send you straight to the download.</p>
+
+    <form id="ota-gate-form" class="ota__gate" action="https://formspree.io/f/mbdepkar" method="POST">
+      <input type="email" name="email" class="ota__gate-input" placeholder="you@hotel.com" required>
+      <input type="hidden" name="_subject" value="OTA Guard — trial request">
+      <button type="submit" class="ota__btn ota__btn--primary">Get download link</button>
+    </form>
+    <div class="ota__gate-note">We'll only use this to send your license details after the trial.</div>
+    <div class="ota__gate-error" id="ota-gate-error">Something went wrong — please try again, or email us directly.</div>
+
+    <div class="ota__gate-success" id="ota-gate-success" hidden>
+      <p>Thanks — your download is ready:</p>
+    </div>
+
+    <div class="ota__cta-row">
+      <a href="https://github.com/YOUR_ACCOUNT/YOUR_REPO/releases/latest/download/OTA-Guard-Setup.exe"
+         id="ota-download-link" class="ota__btn ota__btn--primary" style="display:none;">Download for Windows</a>
+      <a href="mailto:iphome.india@gmail.com" class="ota__btn ota__btn--ghost">Ask a question</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="ota__footer">
+    <div class="ota__footer-inner">
+      <div><strong>OTA Guard</strong> — by LISBOA PVT, New Delhi</div>
+      <div>iphome.india@gmail.com · +91 93073 80525 · Mon–Sat, 09:00–19:00 IST</div>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var footEl = document.getElementById('ota-desk-foot');
+  var clockEl = document.getElementById('ota-clock');
+
+  if(clockEl){
+    var seconds = 0;
+    setInterval(function(){
+      seconds += 1;
+      clockEl.textContent = 'last scan: ' + seconds + 's ago';
+    }, 1000);
+  }
+
+  // Founder offer countdown — ends July 31, 2026 23:59:59 IST
+  var deadline = new Date('2026-07-31T23:59:59+05:30').getTime();
+  var cdDays = document.getElementById('ota-cd-days');
+  var cdHours = document.getElementById('ota-cd-hours');
+  var cdMins = document.getElementById('ota-cd-mins');
+  var cdSecs = document.getElementById('ota-cd-secs');
+
+  if(cdDays){
+    setInterval(function(){
+      var now = Date.now();
+      var diff = deadline - now;
+      if(diff <= 0){
+        cdDays.textContent = '0'; cdHours.textContent = '0';
+        cdMins.textContent = '0'; cdSecs.textContent = '0';
+        return;
+      }
+      var d = Math.floor(diff / 86400000);
+      var h = Math.floor((diff % 86400000) / 3600000);
+      var m = Math.floor((diff % 3600000) / 60000);
+      var s = Math.floor((diff % 60000) / 1000);
+      cdDays.textContent = d;
+      cdHours.textContent = h < 10 ? '0' + h : h;
+      cdMins.textContent = m < 10 ? '0' + m : m;
+      cdSecs.textContent = s < 10 ? '0' + s : s;
+    }, 1000);
+  }
+
+  // Email gate: capture lead via Formspree, then reveal download link
+  var gateForm = document.getElementById('ota-gate-form');
+  var gateSuccess = document.getElementById('ota-gate-success');
+  var gateError = document.getElementById('ota-gate-error');
+  var downloadLink = document.getElementById('ota-download-link');
+
+  if(gateForm){
+    gateForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      gateError.style.display = 'none';
+
+      fetch(gateForm.action, {
+        method: 'POST',
+        body: new FormData(gateForm),
+        headers: { 'Accept': 'application/json' }
+      })
+      .then(function(response){
+        if(response.ok){
+          gateForm.style.display = 'none';
+          gateSuccess.hidden = false;
+          downloadLink.style.display = 'inline-flex';
+          if(typeof gtag === 'function'){
+            gtag('event', 'generate_lead', { method: 'email_gate' });
+          }
+        } else {
+          gateError.style.display = 'block';
+        }
+      })
+      .catch(function(){
+        gateError.style.display = 'block';
+      });
+    });
+  }
+  if(downloadLink){
+    downloadLink.addEventListener('click', function(){
+      if(typeof gtag === 'function'){
+        gtag('event', 'file_download', { file_name: 'OTA-Guard-Setup.exe' });
+      }
+    });
+  }
+})();
+</script>
