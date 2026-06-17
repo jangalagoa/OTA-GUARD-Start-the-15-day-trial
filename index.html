@@ -29,19 +29,15 @@
   @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
 
   *{ margin:0; padding:0; box-sizing:border-box; }
-
   .ota{ font-family: var(--sans); color: var(--ink); background: var(--paper); line-height: 1.5; overflow-x: hidden; }
   .ota a{ color:inherit; }
   .ota__section{ padding: 96px 24px; max-width: 1080px; margin: 0 auto; }
   @media (max-width: 720px){ .ota__section{ padding: 64px 20px; } }
-
   .ota__eyebrow{ font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; display: flex; align-items: center; gap: 10px; }
   .ota__eyebrow::before{ content:""; width: 7px; height: 7px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 0 0 rgba(203,161,53,0.6); animation: ota-pulse 2.4s infinite; }
   @media (prefers-reduced-motion: reduce){ .ota__eyebrow::before{ animation:none; } }
   @keyframes ota-pulse{ 0%{ box-shadow: 0 0 0 0 rgba(203,161,53,0.55); } 70%{ box-shadow: 0 0 0 8px rgba(203,161,53,0); } 100%{ box-shadow: 0 0 0 0 rgba(203,161,53,0); } }
-
   .ota h1, .ota h2, .ota h3{ font-family: var(--serif); font-weight: 600; letter-spacing: -0.01em; color: var(--ink); }
-
   .ota__hero{ background: radial-gradient(120% 100% at 15% 0%, #1C3050 0%, var(--midnight) 55%, #0A1320 100%); color: var(--paper); padding: 88px 24px 100px; position: relative; }
   .ota__hero-inner{ max-width: 1080px; margin: 0 auto; display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 56px; align-items: center; }
   @media (max-width: 880px){ .ota__hero-inner{ grid-template-columns: 1fr; gap: 48px; } }
@@ -55,7 +51,6 @@
   .ota__btn--primary:hover{ background: var(--gold-soft); }
   .ota__btn--ghost{ background: transparent; border-color: rgba(246,241,231,0.28); color: var(--paper); }
   .ota__btn--ghost:hover{ border-color: var(--gold-soft); color: var(--gold-soft); }
-
   .ota__desk{ background: var(--midnight-2); border: 1px solid var(--midnight-3); border-radius: 14px; padding: 22px; box-shadow: 0 30px 60px -25px rgba(0,0,0,0.6); }
   .ota__desk-head{ display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 16px; font-family: var(--mono); font-size: 0.78rem; color: var(--muted); letter-spacing: 0.06em; }
   .ota__desk-head strong{ color: var(--paper); font-weight: 500; }
@@ -72,7 +67,6 @@
   @keyframes ota-blink{ 0%, 100%{ opacity:1; } 50%{ opacity:0.25; } }
   @media (prefers-reduced-motion: reduce){ .ota__dot--alert{ animation:none; } }
   .ota__desk-foot{ margin-top: 14px; font-family: var(--mono); font-size: 0.72rem; color: var(--muted); text-align: right; }
-
   .ota__problem{ text-align: center; }
   .ota__problem h2{ font-size: clamp(1.7rem, 3.2vw, 2.4rem); margin-bottom: 14px; }
   .ota__problem > p{ color: var(--muted-2); max-width: 620px; margin: 0 auto 56px; font-size: 1.05rem; }
@@ -85,7 +79,6 @@
   .ota__block--accent{ background: linear-gradient(135deg, var(--midnight) 0%, #1C3050 100%); border-color: var(--gold); grid-column: 1 / -1; }
   .ota__block--accent h3{ color: var(--gold); }
   .ota__block--accent p{ color: var(--paper-2); max-width: 680px; }
-
   .ota__how{ background: var(--paper-2); }
   .ota__how-grid{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 48px; }
   @media (max-width: 820px){ .ota__how-grid{ grid-template-columns: 1fr; } }
@@ -93,7 +86,6 @@
   .ota__how-step{ font-family: var(--mono); font-size: 0.78rem; color: var(--gold); letter-spacing: 0.12em; margin-bottom: 14px; }
   .ota__how-card h3{ font-size: 1.25rem; margin-bottom: 10px; }
   .ota__how-card p{ color: var(--muted-2); font-size: 0.94rem; }
-
   .ota__features h2{ font-size: clamp(1.7rem, 3.2vw, 2.4rem); margin-bottom: 48px; text-align: center; }
   .ota__feat-grid{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: #E2D9C6; border: 1px solid #E2D9C6; border-radius: 12px; overflow: hidden; }
   @media (max-width: 820px){ .ota__feat-grid{ grid-template-columns: repeat(2, 1fr); } }
@@ -101,7 +93,6 @@
   .ota__feat{ background: var(--paper); padding: 28px 24px; }
   .ota__feat h3{ font-size: 1.02rem; font-family: var(--sans); font-weight: 600; margin-bottom: 8px; }
   .ota__feat p{ color: var(--muted-2); font-size: 0.9rem; }
-
   .ota__maint{ background: var(--midnight); color: var(--paper); }
   .ota__maint-inner{ display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
   @media (max-width: 820px){ .ota__maint-inner{ grid-template-columns: 1fr; } }
@@ -111,7 +102,6 @@
   .ota__maint-list li{ padding: 12px 0; border-top: 1px solid var(--midnight-3); display: flex; gap: 12px; }
   .ota__maint-list li:first-child{ border-top: none; }
   .ota__maint-list span{ color: var(--gold); }
-
   .ota__pricing h2{ font-size: clamp(1.7rem, 3.2vw, 2.4rem); text-align: center; margin-bottom: 12px; }
   .ota__pricing > p{ text-align: center; color: var(--muted-2); max-width: 540px; margin: 0 auto 48px; }
   .ota__price-grid{ display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
@@ -126,7 +116,6 @@
   .ota__price-list{ list-style: none; font-size: 0.92rem; }
   .ota__price-list li{ padding: 8px 0; border-top: 1px solid #EDE6D6; color: var(--ink); }
   .ota__price-list li:first-child{ border-top: none; }
-
   .ota__compare{ margin-top: 32px; text-align: center; font-family: var(--mono); font-size: 0.86rem; color: var(--muted-2); border-top: 1px dashed #D8CDB6; padding-top: 28px; }
   .ota__compare strong{ color: var(--ink); }
   .ota__countdown{ display: flex; gap: 16px; justify-content: center; margin-top: 18px; }
@@ -141,12 +130,10 @@
   .ota__comp-item{ display: flex; justify-content: space-between; align-items: center; font-family: var(--mono); font-size: 0.8rem; padding: 10px 14px; background: rgba(0,0,0,0.03); border-radius: 8px; }
   .ota__comp-name{ color: var(--muted-2); }
   .ota__comp-price{ color: var(--alert); font-weight: 600; }
-
   .ota__final{ background: var(--midnight); color: var(--paper); text-align: center; padding: 96px 24px; }
   .ota__final h2{ color: var(--paper); font-size: clamp(1.8rem, 3.6vw, 2.6rem); margin-bottom: 16px; }
   .ota__final p{ color: var(--muted); margin-bottom: 32px; }
   .ota__final .ota__cta-row{ justify-content: center; }
-
   .ota__gate{ display: flex; flex-direction: column; gap: 10px; align-items: center; margin-bottom: 18px; }
   .ota__gate-row{ display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; width: 100%; }
   .ota__gate-input{ font-family: var(--sans); font-size: 0.95rem; padding: 14px 18px; border-radius: 8px; border: 1px solid var(--midnight-3); background: var(--midnight-2); color: var(--paper); min-width: 260px; }
@@ -155,7 +142,6 @@
   .ota__gate-note{ font-size: 0.8rem; color: var(--muted); margin-bottom: 32px; }
   .ota__gate-success p{ color: var(--ok); font-size: 0.95rem; margin-bottom: 14px; }
   .ota__gate-error{ color: var(--alert); font-size: 0.85rem; margin-top: 10px; display: none; }
-
   .ota__footer{ background: #0A1320; color: var(--muted); padding: 32px 24px; font-size: 0.82rem; }
   .ota__footer-inner{ max-width: 1080px; margin: 0 auto; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
   .ota__footer strong{ color: var(--paper); }
@@ -283,87 +269,4 @@
       </div>
       <div class="ota__gate-row">
         <input type="text" name="agent_code" id="ota-agent" class="ota__gate-input" placeholder="Agent code (optional)" style="min-width:200px;max-width:260px;">
-        <button type="submit" class="ota__btn ota__btn--primary">Get download link</button>
-      </div>
-    </form>
-    <div class="ota__gate-note">We'll only use this to send your license details after the trial.</div>
-    <div class="ota__gate-error" id="ota-gate-error">Something went wrong — please try again, or email us directly.</div>
-    <div class="ota__gate-success" id="ota-gate-success" hidden><p>Thanks — your download is ready:</p></div>
-    <div class="ota__cta-row" style="justify-content:center;">
-      <a href="https://github.com/jangalagoa/OTA-GUARD-Start-the-15-day-trial/releases/download/OTA-Guard-v1/OTAGuard_Setup_v1.0.0.exe" id="ota-download-link" class="ota__btn ota__btn--primary" style="display:none;">Download for Windows</a>
-      <a href="mailto:iphome.india@gmail.com" class="ota__btn ota__btn--ghost">Ask a question</a>
-    </div>
-  </section>
-
-  <footer class="ota__footer">
-    <div class="ota__footer-inner">
-      <div><strong>OTA Guard</strong> — by LISBOA PVT, New Delhi</div>
-      <div>iphome.india@gmail.com · +91 93073 80525 · Mon–Sat, 09:00–19:00 IST</div>
-    </div>
-  </footer>
-
-</div>
-
-<script>
-(function(){
-  var clockEl = document.getElementById('ota-clock');
-  if(clockEl){
-    var seconds = 0;
-    setInterval(function(){ seconds += 1; clockEl.textContent = 'last scan: ' + seconds + 's ago'; }, 1000);
-  }
-
-  var deadline = new Date('2026-07-31T23:59:59+05:30').getTime();
-  var cdDays = document.getElementById('ota-cd-days');
-  var cdHours = document.getElementById('ota-cd-hours');
-  var cdMins = document.getElementById('ota-cd-mins');
-  var cdSecs = document.getElementById('ota-cd-secs');
-  if(cdDays){
-    setInterval(function(){
-      var diff = deadline - Date.now();
-      if(diff <= 0){ cdDays.textContent=cdHours.textContent=cdMins.textContent=cdSecs.textContent='0'; return; }
-      cdDays.textContent = Math.floor(diff/86400000);
-      cdHours.textContent = String(Math.floor((diff%86400000)/3600000)).padStart(2,'0');
-      cdMins.textContent  = String(Math.floor((diff%3600000)/60000)).padStart(2,'0');
-      cdSecs.textContent  = String(Math.floor((diff%60000)/1000)).padStart(2,'0');
-    }, 1000);
-  }
-
-  var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxisDNoJ93ti70ubAvZSR8-4KklQcLIA6j8aF1kjKjybkBChW6exCFDs39vXkDlbZbmtQ/exec';
-  var gateForm     = document.getElementById('ota-gate-form');
-  var gateSuccess  = document.getElementById('ota-gate-success');
-  var gateError    = document.getElementById('ota-gate-error');
-  var downloadLink = document.getElementById('ota-download-link');
-
-  if(gateForm){
-    gateForm.addEventListener('submit', function(e){
-      e.preventDefault();
-      gateError.style.display = 'none';
-      var payload = {
-        email:      document.getElementById('ota-email').value.trim(),
-        hotel_name: document.getElementById('ota-hotel').value.trim(),
-        agent_code: document.getElementById('ota-agent').value.trim()
-      };
-           fetch(APPS_SCRIPT_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        body: JSON.stringify(payload)
-      })
-      .then(function(){
-        gateForm.style.display = 'none';
-        gateSuccess.hidden = false;
-        downloadLink.style.display = 'inline-flex';
-        if(typeof gtag === 'function') gtag('event', 'generate_lead', { method: 'email_gate' });
-      })
-      .catch(function(){
-        gateError.style.display = 'block';
-      });
-    });
-  }
-
-  if(downloadLink){
-    downloadLink.addEventListener('click', function(){
-      if(typeof gtag === 'function') gtag('event', 'file_download', { file_name: 'OTA-Guard-Setup.exe' });
-    });
-  }
-})();
-</script>
+        <button type="submit" class="ota__bt
