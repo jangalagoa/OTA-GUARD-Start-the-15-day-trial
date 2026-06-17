@@ -269,4 +269,94 @@
       </div>
       <div class="ota__gate-row">
         <input type="text" name="agent_code" id="ota-agent" class="ota__gate-input" placeholder="Agent code (optional)" style="min-width:200px;max-width:260px;">
-        <button type="submit" class="ota__bt
+        <button type="submit" class="ota__btn ota__btn--primary">Get download link</button>
+      </div>
+    </form>
+    <div class="ota__gate-note">We'll only use this to send your license details after the trial.</div>
+    <div class="ota__gate-error" id="ota-gate-error">Something went wrong — please try again, or email us directly.</div>
+    <div class="ota__gate-success" id="ota-gate-success" hidden><p>Thanks — your download is ready:</p></div>
+    <div class="ota__cta-row" style="justify-content:center;">
+      <a href="https://github.com/jangalagoa/OTA-GUARD-Start-the-15-day-trial/releases/download/OTA-Guard-v1/OTAGuard_Setup_v1.0.0.exe" id="ota-download-link" class="ota__btn ota__btn--primary" style="display:none;">Download for Windows</a>
+      <a href="mailto:iphome.india@gmail.com" class="ota__btn ota__btn--ghost">Ask a question</a>
+    </div>
+  </section>
+
+  <footer class="ota__footer">
+    <div class="ota__footer-inner">
+      <div><strong>OTA Guard</strong> — by LISBOA PVT, New Delhi</div>
+      <div>iphome.india@gmail.com · +91 93073 80525 · Mon–Sat, 09:00–19:00 IST</div>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  var clockEl = document.getElementById('ota-clock');
+  if(clockEl){
+    var seconds = 0;
+    setInterval(function(){ seconds += 1; clockEl.textContent = 'last scan: ' + seconds + 's ago'; }, 1000);
+  }
+
+  var deadline = new Date('2026-07-31T23:59:59+05:30').getTime();
+  var cdDays = document.getElementById('ota-cd-days');
+  var cdHours = document.getElementById('ota-cd-hours');
+  var cdMins = document.getElementById('ota-cd-mins');
+  var cdSecs = document.getElementById('ota-cd-secs');
+  if(cdDays){
+    setInterval(function(){
+      var diff = deadline - Date.now();
+      if(diff <= 0){ cdDays.textContent=cdHours.textContent=cdMins.textContent=cdSecs.textContent='0'; return; }
+      cdDays.textContent = Math.floor(diff/86400000);
+      cdHours.textContent = String(Math.floor((diff%86400000)/3600000)).padStart(2,'0');
+      cdMins.textContent  = String(Math.floor((diff%3600000)/60000)).padStart(2,'0');
+      cdSecs.textContent  = String(Math.floor((diff%60000)/1000)).padStart(2,'0');
+    }, 1000);
+  }
+
+  var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxisDNoJ93ti70ubAvZSR8-4KklQcLIA6j8aF1kjKjybkBChW6exCFDs39vXkDlbZbmtQ/exec';
+  var gateForm     = document.getElementById('ota-gate-form');
+  var gateSuccess  = document.getElementById('ota-gate-success');
+  var gateError    = document.getElementById('ota-gate-error');
+  var downloadLink = document.getElementById('ota-download-link');
+
+  if(gateForm){
+    gateForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      gateError.style.display = 'none';
+
+      var email      = document.getElementById('ota-email').value.trim();
+      var hotel_name = document.getElementById('ota-hotel').value.trim();
+      var agent_code = document.getElementById('ota-agent').value.trim();
+
+      var url = APPS_SCRIPT_URL
+        + '?email='      + encodeURIComponent(email)
+        + '&hotel_name=' + encodeURIComponent(hotel_name)
+        + '&agent_code=' + encodeURIComponent(agent_code);
+
+      fetch(url)
+      .then(function(r){ return r.json(); })
+      .then(function(data){
+        if(data.status === 'ok' || data.status === 'no_agent'){
+          gateForm.style.display = 'none';
+          gateSuccess.hidden = false;
+          downloadLink.style.display = 'inline-flex';
+          if(typeof gtag === 'function') gtag('event', 'generate_lead', { method: 'email_gate' });
+        } else {
+          gateError.textContent = data.message || 'Something went wrong — please try again.';
+          gateError.style.display = 'block';
+        }
+      })
+      .catch(function(){
+        gateError.style.display = 'block';
+      });
+    });
+  }
+
+  if(downloadLink){
+    downloadLink.addEventListener('click', function(){
+      if(typeof gtag === 'function') gtag('event', 'file_download', { file_name: 'OTA-Guard-Setup.exe' });
+    });
+  }
+})();
+</script>
