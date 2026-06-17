@@ -40,7 +40,6 @@
 
   .ota a{ color:inherit; }
 
-  /* ===== Layout helpers ===== */
   .ota__section{
     padding: 96px 24px;
     max-width: 1080px;
@@ -83,7 +82,6 @@
     color: var(--ink);
   }
 
-  /* ===== HERO ===== */
   .ota__hero{
     background: radial-gradient(120% 100% at 15% 0%, #1C3050 0%, var(--midnight) 55%, #0A1320 100%);
     color: var(--paper);
@@ -149,7 +147,6 @@
   }
   .ota__btn--ghost:hover{ border-color: var(--gold-soft); color: var(--gold-soft); }
 
-  /* ===== Night Desk mock (signature element) ===== */
   .ota__desk{
     background: var(--midnight-2);
     border: 1px solid var(--midnight-3);
@@ -231,7 +228,6 @@
     text-align: right;
   }
 
-  /* ===== Problem section ===== */
   .ota__problem{ text-align: center; }
   .ota__problem h2{
     font-size: clamp(1.7rem, 3.2vw, 2.4rem);
@@ -286,7 +282,6 @@
     max-width: 680px;
   }
 
-  /* ===== How it works ===== */
   .ota__how{ background: var(--paper-2); }
   .ota__how-grid{
     display: grid;
@@ -317,7 +312,6 @@
     font-size: 0.94rem;
   }
 
-  /* ===== Features ===== */
   .ota__features h2{
     font-size: clamp(1.7rem, 3.2vw, 2.4rem);
     margin-bottom: 48px;
@@ -349,7 +343,6 @@
     font-size: 0.9rem;
   }
 
-  /* ===== Maintenance ===== */
   .ota__maint{
     background: var(--midnight);
     color: var(--paper);
@@ -378,7 +371,6 @@
   .ota__maint-list li:first-child{ border-top: none; }
   .ota__maint-list span{ color: var(--gold); }
 
-  /* ===== Pricing ===== */
   .ota__pricing h2{
     font-size: clamp(1.7rem, 3.2vw, 2.4rem);
     text-align: center;
@@ -517,7 +509,6 @@
   .ota__comp-name{ color: var(--muted-2); }
   .ota__comp-price{ color: var(--alert); font-weight: 600; }
 
-  /* ===== Final CTA ===== */
   .ota__final{
     background: var(--midnight);
     color: var(--paper);
@@ -535,13 +526,19 @@
   }
   .ota__final .ota__cta-row{ justify-content: center; }
 
-  /* ===== Email gate ===== */
   .ota__gate{
     display: flex;
+    flex-direction: column;
     gap: 10px;
-    justify-content: center;
-    flex-wrap: wrap;
+    align-items: center;
     margin-bottom: 18px;
+  }
+  .ota__gate-row{
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
   }
   .ota__gate-input{
     font-family: var(--sans);
@@ -575,7 +572,6 @@
     display: none;
   }
 
-  /* ===== Footer ===== */
   .ota__footer{
     background: #0A1320;
     color: var(--muted);
@@ -793,12 +789,17 @@
   <!-- FINAL CTA -->
   <section class="ota__final" id="download">
     <h2>Start the 15-day trial</h2>
-    <p>Full features, no payment required. Leave your email and we'll send you straight to the download.</p>
+    <p>Full features, no payment required. Fill in your details and get your download link instantly.</p>
 
-    <form id="ota-gate-form" class="ota__gate" action="https://formspree.io/f/mbdepkar" method="POST">
-      <input type="email" name="email" class="ota__gate-input" placeholder="you@hotel.com" required>
-      <input type="hidden" name="_subject" value="OTA Guard — trial request">
-      <button type="submit" class="ota__btn ota__btn--primary">Get download link</button>
+    <form id="ota-gate-form" class="ota__gate">
+      <div class="ota__gate-row">
+        <input type="email" name="email" id="ota-email" class="ota__gate-input" placeholder="you@hotel.com" required>
+        <input type="text" name="hotel_name" id="ota-hotel" class="ota__gate-input" placeholder="Hotel or company name" required>
+      </div>
+      <div class="ota__gate-row">
+        <input type="text" name="agent_code" id="ota-agent" class="ota__gate-input" placeholder="Agent code (optional)" style="min-width:200px;max-width:260px;">
+        <button type="submit" class="ota__btn ota__btn--primary">Get download link</button>
+      </div>
     </form>
     <div class="ota__gate-note">We'll only use this to send your license details after the trial.</div>
     <div class="ota__gate-error" id="ota-gate-error">Something went wrong — please try again, or email us directly.</div>
@@ -807,7 +808,7 @@
       <p>Thanks — your download is ready:</p>
     </div>
 
-    <div class="ota__cta-row">
+    <div class="ota__cta-row" style="justify-content:center;">
       <a href="https://github.com/jangalagoa/OTA-GUARD-Start-the-15-day-trial/releases/download/OTA-Guard-v1/OTAGuard_Setup_v1.0.0.exe"
          id="ota-download-link" class="ota__btn ota__btn--primary" style="display:none;">Download for Windows</a>
       <a href="mailto:iphome.india@gmail.com" class="ota__btn ota__btn--ghost">Ask a question</a>
@@ -826,10 +827,7 @@
 
 <script>
 (function(){
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var footEl = document.getElementById('ota-desk-foot');
   var clockEl = document.getElementById('ota-clock');
-
   if(clockEl){
     var seconds = 0;
     setInterval(function(){
@@ -838,37 +836,32 @@
     }, 1000);
   }
 
-  // Founder offer countdown — ends July 31, 2026 23:59:59 IST
   var deadline = new Date('2026-07-31T23:59:59+05:30').getTime();
-  var cdDays = document.getElementById('ota-cd-days');
+  var cdDays  = document.getElementById('ota-cd-days');
   var cdHours = document.getElementById('ota-cd-hours');
-  var cdMins = document.getElementById('ota-cd-mins');
-  var cdSecs = document.getElementById('ota-cd-secs');
-
+  var cdMins  = document.getElementById('ota-cd-mins');
+  var cdSecs  = document.getElementById('ota-cd-secs');
   if(cdDays){
     setInterval(function(){
       var now = Date.now();
       var diff = deadline - now;
-      if(diff <= 0){
-        cdDays.textContent = '0'; cdHours.textContent = '0';
-        cdMins.textContent = '0'; cdSecs.textContent = '0';
-        return;
-      }
+      if(diff <= 0){ cdDays.textContent='0'; cdHours.textContent='0'; cdMins.textContent='0'; cdSecs.textContent='0'; return; }
       var d = Math.floor(diff / 86400000);
       var h = Math.floor((diff % 86400000) / 3600000);
       var m = Math.floor((diff % 3600000) / 60000);
       var s = Math.floor((diff % 60000) / 1000);
       cdDays.textContent = d;
-      cdHours.textContent = h < 10 ? '0' + h : h;
-      cdMins.textContent = m < 10 ? '0' + m : m;
-      cdSecs.textContent = s < 10 ? '0' + s : s;
+      cdHours.textContent = h < 10 ? '0'+h : h;
+      cdMins.textContent  = m < 10 ? '0'+m : m;
+      cdSecs.textContent  = s < 10 ? '0'+s : s;
     }, 1000);
   }
 
-  // Email gate: capture lead via Formspree, then reveal download link
-  var gateForm = document.getElementById('ota-gate-form');
-  var gateSuccess = document.getElementById('ota-gate-success');
-  var gateError = document.getElementById('ota-gate-error');
+  var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxisDNoJ93ti70ubAvZSR8-4KklQcLIA6j8aF1kjKjybkBChW6exCFDs39vXkDlbZbmtQ/exec';
+
+  var gateForm     = document.getElementById('ota-gate-form');
+  var gateSuccess  = document.getElementById('ota-gate-success');
+  var gateError    = document.getElementById('ota-gate-error');
   var downloadLink = document.getElementById('ota-download-link');
 
   if(gateForm){
@@ -876,13 +869,20 @@
       e.preventDefault();
       gateError.style.display = 'none';
 
-      fetch(gateForm.action, {
+      var payload = {
+        email:      document.getElementById('ota-email').value.trim(),
+        hotel_name: document.getElementById('ota-hotel').value.trim(),
+        agent_code: document.getElementById('ota-agent').value.trim()
+      };
+
+      fetch(APPS_SCRIPT_URL, {
         method: 'POST',
-        body: new FormData(gateForm),
-        headers: { 'Accept': 'application/json' }
+        body: JSON.stringify(payload),
+        headers: { 'Content-Type': 'application/json' }
       })
-      .then(function(response){
-        if(response.ok){
+      .then(function(r){ return r.json(); })
+      .then(function(data){
+        if(data.status === 'ok' || data.status === 'no_agent'){
           gateForm.style.display = 'none';
           gateSuccess.hidden = false;
           downloadLink.style.display = 'inline-flex';
@@ -890,6 +890,7 @@
             gtag('event', 'generate_lead', { method: 'email_gate' });
           }
         } else {
+          gateError.textContent = data.message || 'Something went wrong — please try again.';
           gateError.style.display = 'block';
         }
       })
@@ -898,6 +899,7 @@
       });
     });
   }
+
   if(downloadLink){
     downloadLink.addEventListener('click', function(){
       if(typeof gtag === 'function'){
