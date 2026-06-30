@@ -795,9 +795,10 @@
     <h2>Start the 15-day trial</h2>
     <p>Full features, no payment required. Leave your email and we'll send you straight to the download.</p>
 
-    <form id="ota-gate-form" class="ota__gate" action="https://formspree.io/f/mbdepkar" method="POST">
+    <form id="ota-gate-form" class="ota__gate">
       <input type="email" name="email" class="ota__gate-input" placeholder="you@hotel.com" required>
-      <input type="hidden" name="_subject" value="OTA Guard — trial request">
+      <input type="text" name="hotel_name" class="ota__gate-input" placeholder="Hotel / Company name" required style="min-width:200px;">
+      <input type="text" name="agent_code" class="ota__gate-input" placeholder="Agent code (optional)" style="min-width:160px;">
       <button type="submit" class="ota__btn ota__btn--primary">Get download link</button>
     </form>
     <div class="ota__gate-note">We'll only use this to send your license details after the trial.</div>
@@ -870,18 +871,22 @@
   var gateError = document.getElementById('ota-gate-error');
   var downloadLink = document.getElementById('ota-download-link');
 
+  var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxisDNoJ93ti70ubAvZSR8-4KklQcLIA6j8aF1kjKjybkBChW6exCFDs39vXkDlbZbmtQ/exec';
+
   if(gateForm){
     gateForm.addEventListener('submit', function(e){
       e.preventDefault();
       gateError.style.display = 'none';
 
-      fetch(gateForm.action, {
-        method: 'POST',
-        body: new FormData(gateForm),
-        headers: { 'Accept': 'application/json' }
-      })
-      .then(function(response){
-        if(response.ok){
+      var email = gateForm.querySelector('[name="email"]').value;
+      var agentCode = gateForm.querySelector('[name="agent_code"]').value;
+      var hotelName = gateForm.querySelector('[name="hotel_name"]').value;
+      var url = APPS_SCRIPT_URL + '?action=register&email=' + encodeURIComponent(email) + '&hotel_name=' + encodeURIComponent(hotelName) + '&agent_code=' + encodeURIComponent(agentCode);
+
+      fetch(url)
+      .then(function(response){ return response.json(); })
+      .then(function(data){
+        if(data.status === 'ok' || data.status === 'no_agent' || data.success){
           gateForm.style.display = 'none';
           gateSuccess.hidden = false;
           downloadLink.style.display = 'inline-flex';
