@@ -808,6 +808,8 @@
       <p>Thanks — your download is ready:</p>
     </div>
 
+    <iframe name="ota-hidden-frame" id="ota-hidden-frame" style="display:none;" title="ota-form-target"></iframe>
+
     <div class="ota__cta-row">
       <a href="#" id="ota-download-link" class="ota__btn ota__btn--primary" style="display:none;">Download for Windows</a>
       <a href="mailto:iphome.india@gmail.com" class="ota__btn ota__btn--ghost">Ask a question</a>
@@ -870,6 +872,7 @@
   var gateSuccess = document.getElementById('ota-gate-success');
   var gateError = document.getElementById('ota-gate-error');
   var downloadLink = document.getElementById('ota-download-link');
+  var hiddenFrame = document.getElementById('ota-hidden-frame');
 
   var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwMNvHfyX6OyHWLp1FS82bWZBvmjVpQYXRlHQRCbdZ_EaIOaE39crLBUVEL-YuLYaf0ZQ/exec';
 
@@ -883,18 +886,24 @@
       var hotelName = gateForm.querySelector('[name="hotel_name"]').value;
       var url = APPS_SCRIPT_URL + '?action=register&email=' + encodeURIComponent(email) + '&hotel_name=' + encodeURIComponent(hotelName) + '&agent_code=' + encodeURIComponent(agentCode);
 
-      fetch(url, { mode: 'no-cors' })
-      .then(function(){
+      // Navigation d'iframe : pas de fetch/CORS, la requête part garantie.
+      var settled = false;
+      var onLoad = function(){
+        if(settled) return;
+        settled = true;
+        hiddenFrame.removeEventListener('load', onLoad);
         gateForm.style.display = 'none';
         gateSuccess.hidden = false;
         downloadLink.style.display = 'inline-flex';
         if(typeof gtag === 'function'){
           gtag('event', 'generate_lead', { method: 'email_gate' });
         }
-      })
-      .catch(function(){
-        gateError.style.display = 'block';
-      });
+      };
+      hiddenFrame.addEventListener('load', onLoad);
+      // Filet de sécurité si l'event 'load' ne se déclenche pas.
+      setTimeout(onLoad, 4000);
+
+      hiddenFrame.src = url;
     });
   }
   if(downloadLink){
