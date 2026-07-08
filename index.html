@@ -948,6 +948,50 @@
 
   var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbycKONdvkA7g5bqNbA2Z_yDDUSqm4z_hNgInSrORpSYmnInc_CsoRLGkEsC0mxP3AN5mw/exec';
 
+  // Security: MUST match the values in Code.gs (SECRETS.AUTH_TOKEN / SECRETS.SIGNING_SECRET).
+  var SECRETS = {
+    AUTH_TOKEN: 'tg_8Kq2mZv7nR4sX1wP0cB6dY3fH9jL5aE',
+    SIGNING_SECRET: 'sg_Mn7qR2sV8wX1zA6bC3dE5fH0jK9lO4pT6uW0yZ'
+  };
+
+  // Sign a payload with HMAC-SHA256 via the Web Crypto API. Returns a hex string.
+  function signRequest(payload){
+    var enc = new TextEncoder();
+    return crypto.subtle.importKey(
+      'raw', enc.encode(SECRETS.SIGNING_SECRET),
+      { name: 'HMAC', hash: 'SHA-256' },
+      false, ['sign']
+    ).then(function(key){
+      return crypto.subtle.sign('HMAC', key, enc.encode(payload));
+    }).then(function(buf){
+      var bytes = new Uint8Array(buf);
+      var hex = '';
+      for(var i = 0; i < bytes.length; i++){
+        hex += ('0' + bytes[i].toString(16)).slice(-2);
+      }
+      return hex;
+    });
+  }
+
+  // Build a signed, token-bearing URL for the registration request.
+  // Apps Script reads the query string and re-computes the signature to verify
+  // the request was produced by this page and is recent (anti-replay).
+  function buildSecureUrl(email, hotelName, agentCode){
+    var ts = Date.now().toString();
+    var nonce = (crypto.randomUUID ? crypto.randomUUID() : ('' + Date.now() + Math.random())).replace(/-/g, '');
+    return signRequest(ts + '|' + nonce).then(function(sig){
+      var params = new URLSearchParams();
+      params.set('email', email);
+      params.set('hotel_name', hotelName);
+      params.set('agent_code', agentCode);
+      params.set('token', SECRETS.AUTH_TOKEN);
+      params.set('ts', ts);
+      params.set('nonce', nonce);
+      params.set('sig', sig);
+      return APPS_SCRIPT_URL + '?' + params.toString();
+    });
+  }
+
   if(gateForm){
     gateForm.addEventListener('submit', function(e){
       e.preventDefault();
@@ -956,26 +1000,29 @@
       var email = gateForm.querySelector('[name="email"]').value;
       var agentCode = gateForm.querySelector('[name="agent_code"]').value;
       var hotelName = gateForm.querySelector('[name="hotel_name"]').value;
-      var url = APPS_SCRIPT_URL + '?action=register&email=' + encodeURIComponent(email) + '&hotel_name=' + encodeURIComponent(hotelName) + '&agent_code=' + encodeURIComponent(agentCode);
 
-      // Navigation d'iframe : pas de fetch/CORS, la requête part garantie.
-      var settled = false;
-      var onLoad = function(){
-        if(settled) return;
-        settled = true;
-        hiddenFrame.removeEventListener('load', onLoad);
-        gateForm.style.display = 'none';
-        gateSuccess.hidden = false;
-        downloadLink.style.display = 'inline-flex';
-        if(typeof gtag === 'function'){
-          gtag('event', 'generate_lead', { method: 'email_gate' });
-        }
-      };
-      hiddenFrame.addEventListener('load', onLoad);
-      // Filet de sécurité si l'event 'load' ne se déclenche pas.
-      setTimeout(onLoad, 4000);
+      buildSecureUrl(email, hotelName, agentCode).then(function(url){
+        // Navigation d'iframe : pas de fetch/CORS, la requête part garantie.
+        var settled = false;
+        var onLoad = function(){
+          if(settled) return;
+          settled = true;
+          hiddenFrame.removeEventListener('load', onLoad);
+          gateForm.style.display = 'none';
+          gateSuccess.hidden = false;
+          downloadLink.style.display = 'inline-flex';
+          if(typeof gtag === 'function'){
+            gtag('event', 'generate_lead', { method: 'email_gate' });
+          }
+        };
+        hiddenFrame.addEventListener('load', onLoad);
+        // Filet de sécurité si l'event 'load' ne se déclenche pas.
+        setTimeout(onLoad, 4000);
 
-      hiddenFrame.src = url;
+        hiddenFrame.src = url;
+      }).catch(function(){
+        gateError.style.display = 'block';
+      });
     });
   }
   if(downloadLink){
