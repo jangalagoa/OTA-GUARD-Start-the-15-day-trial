@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OTA Guard — Video tutorials</title>
+<link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+<link rel="stylesheet" href="site.css">
+</head>
+<body class="sub">
+
+<nav class="sitenav">
+  <a class="brand" href="index.html"><span class="og">OTA</span> GUARD</a>
+  <div class="links">
+    <a href="index.html">Home</a>
+    <a href="demo.html">Interactive demo</a>
+    <a href="tutorials.html" class="on">Tutorials</a>
+    <a href="docs.html">Documentation</a>
+  </div>
+  <a class="cta" href="https://jangalagoa.github.io/OTA-GUARD-Start-the-15-day-trial/">Free 15-day trial</a>
+</nav>
+
+<header class="sub-hero">
+  <div class="eyebrow">Learn it in minutes</div>
+  <h1>Video <em>tutorials.</em></h1>
+  <p>Short walkthroughs of every part of OTA Guard — from the first launch to the automatic corrections.</p>
+</header>
+
+<main class="sub-main">
+  <div class="cards" id="videos"><!-- built by the script below --></div>
+  <p class="demo-note" style="margin-top:26px">Videos are hosted on YouTube — clicking a card plays them right here,
+  or opens them on the OTA Guard channel.</p>
+</main>
+
+<footer class="sitefoot">
+  <div class="links">
+    <a href="index.html">Home</a>·<a href="demo.html">Demo</a>·<a href="tutorials.html">Tutorials</a>·<a href="docs.html">Documentation</a>
+  </div>
+  <div><b>OTA Guard</b> — by LISBOA PVT · otaguard@proton.me</div>
+</footer>
+
+<script>
+/* ══════════════════════════════════════════════════════════════════
+   ADD A VIDEO HERE: paste its YouTube ID between the quotes.
+   The ID is the 11-character code in the video URL:
+   https://www.youtube.com/watch?v=dQw4w9WgXcQ  →  "dQw4w9WgXcQ"
+   Leave id:"" while the video is not published yet → placeholder card.
+   ══════════════════════════════════════════════════════════════════ */
+const VIDEOS = [
+  { id:"", title:"1. Installation & first launch",        desc:"Download, install, activate the 15-day trial and open the app for the first time.", lang:"EN" },
+  { id:"", title:"2. The configuration wizard",            desc:"The 7 guided steps: hotel, OTAs, target prices, Channel Manager, floor & ceiling.", lang:"EN" },
+  { id:"", title:"3. OTA price block — scan & correct",    desc:"Run a scan, read the results table, approve or let the corrections go automatically.", lang:"EN" },
+  { id:"", title:"4. Extranet Direct — no API needed",     desc:"Connect a Channel Manager without any API key, through your own browser session.", lang:"EN" },
+  { id:"", title:"5. Seasonal rates & locked periods",     desc:"Create a seasonal price period and lock it so corrections never touch it.", lang:"EN" },
+  { id:"", title:"6. The mobile app",                      desc:"Pair your phone with Firebase — gap alerts and remote scan orders.", lang:"EN" },
+];
+
+const box = document.getElementById("videos");
+box.innerHTML = VIDEOS.map(v => `
+  <div class="vid">
+    <div class="emb">${
+      v.id
+      ? `<iframe src="https://www.youtube-nocookie.com/embed/${v.id}" title="${v.title}"
+           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
+      : `<div class="ph"><div class="play">▶</div><b style="color:#fff">${v.title}</b><span>video coming soon</span></div>`
+    }</div>
+    <div class="meta"><h3>${v.title}</h3><span>${v.desc} · ${v.lang}</span></div>
+  </div>`).join("");
+</script>
+
+</body>
+</html>
