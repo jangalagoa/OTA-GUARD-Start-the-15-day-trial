@@ -1,0 +1,147 @@
+/* ═══ OTA Guard v3 — Interactive Demo ═══
+   Reproduces the real Tkinter interface (Catppuccin Mocha by default).
+   The 10 real themes are switchable live from Settings (CSS variables). */
+
+:root{
+  --BG:#1e1e2e; --FG:#cdd6f4; --ENTRY_BG:#313244; --SEL_BG:#45475a;
+  --ACCENT:#89b4fa; --GREEN:#a6e3a1; --RED:#f38ba8; --ORANGE:#fab387; --YELLOW:#f9e2af;
+}
+
+*{ margin:0; padding:0; box-sizing:border-box; }
+body{ background:#11111b; font-family:'Segoe UI', system-ui, sans-serif; font-size:13px; color:var(--FG); padding:10px; }
+
+.demo-banner{
+  max-width:1280px; margin:0 auto 10px; padding:8px 14px; border-radius:8px;
+  background:var(--YELLOW); color:#11111b; font-weight:600; font-size:12px; text-align:center;
+}
+
+/* ═══ App window ═══ */
+.app-window{
+  max-width:1280px; margin:0 auto; border-radius:10px; overflow:hidden;
+  border:1px solid var(--SEL_BG); background:var(--BG);
+  box-shadow:0 20px 60px -20px rgba(0,0,0,.7);
+}
+
+/* ═══ Topbar ═══ */
+.topbar{ display:flex; justify-content:space-between; align-items:center;
+  background:var(--SEL_BG); padding:7px 12px; }
+.topbar-title{ color:var(--ACCENT); font-weight:700; font-size:14px; }
+.topbar-right{ display:flex; align-items:center; gap:8px; }
+.trial-label{ font-size:11px; font-weight:700; color:var(--FG); }
+.tb-btn{ background:var(--ENTRY_BG); color:var(--FG); border:none; border-radius:6px;
+  padding:5px 12px; font-family:inherit; font-size:12px; cursor:pointer; }
+.tb-btn:hover{ filter:brightness(1.2); }
+.tb-btn-accent{ background:var(--ACCENT); color:var(--BG); font-weight:600; }
+.tb-btn-red{ background:var(--RED); color:var(--BG); font-weight:600; }
+
+/* ═══ Tab bar — centered buttons like the real ttk bar ═══ */
+.tabbar{ display:flex; justify-content:center; gap:6px; background:var(--SEL_BG); padding:6px 10px 8px; }
+.tab-btn{ background:var(--ENTRY_BG); color:var(--FG); border:none; border-radius:6px;
+  padding:6px 14px; font-family:inherit; font-size:12.5px; cursor:pointer; }
+.tab-btn:hover{ filter:brightness(1.25); }
+.tab-btn.active{ background:var(--ACCENT); color:var(--BG); font-weight:700; }
+
+/* ═══ Content ═══ */
+.content{ background:var(--BG); padding:14px 16px 20px; min-height:560px; }
+
+.section{ border:1px solid var(--SEL_BG); border-radius:9px; margin-bottom:14px; overflow:hidden; }
+.section > .sec-title{ background:var(--SEL_BG); color:var(--FG); font-weight:700; font-size:12.5px; padding:6px 12px; }
+.section > .sec-body{ padding:10px 12px; }
+.row{ display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin:6px 0; }
+.row.between{ justify-content:space-between; }
+.muted{ color:var(--FG); opacity:.75; font-size:12px; }
+.small{ font-size:11px; }
+.gap-note{ color:var(--ORANGE); font-size:11.5px; margin:4px 0; }
+
+.btn{ background:var(--ENTRY_BG); color:var(--FG); border:1px solid var(--SEL_BG); border-radius:6px;
+  padding:7px 16px; font-family:inherit; font-size:12.5px; cursor:pointer; }
+.btn:hover{ filter:brightness(1.25); }
+.btn.primary{ background:var(--ACCENT); color:var(--BG); border-color:var(--ACCENT); font-weight:700; }
+.btn.danger{ background:var(--RED); color:var(--BG); border-color:var(--RED); font-weight:700; }
+.btn.warn{ background:var(--ORANGE); color:var(--BG); border-color:var(--ORANGE); font-weight:700; }
+.btn:disabled{ opacity:.45; cursor:not-allowed; filter:none; }
+
+input[type=text], input[type=number], input[type=time], input[type=date], select{
+  background:var(--ENTRY_BG); color:var(--FG); border:1px solid var(--SEL_BG); border-radius:5px;
+  padding:6px 9px; font-family:inherit; font-size:12.5px; }
+input:focus, select:focus{ outline:1.5px solid var(--ACCENT); }
+label.chk{ display:inline-flex; align-items:center; gap:6px; cursor:pointer; font-size:12.5px; }
+input[type=checkbox], input[type=radio]{ accent-color:var(--ACCENT); width:14px; height:14px; cursor:pointer; }
+
+.progress{ height:12px; background:var(--ENTRY_BG); border-radius:6px; overflow:hidden; flex:1; border:1px solid var(--SEL_BG); }
+.progress > div{ height:100%; width:0%; background:var(--ACCENT); transition:width .25s ease; }
+
+/* Tables — like ttk.Treeview */
+table.tv{ width:100%; border-collapse:collapse; font-size:12px; }
+table.tv thead th{ background:var(--SEL_BG); color:var(--FG); text-align:left; padding:6px 10px; font-weight:700; }
+table.tv td{ padding:6px 10px; border-bottom:1px solid var(--ENTRY_BG); }
+table.tv tr:hover td{ background:var(--ENTRY_BG); }
+.st-ok{ color:var(--GREEN); font-weight:600; }
+.st-gap{ color:var(--RED); font-weight:600; }
+.st-warn{ color:var(--ORANGE); font-weight:600; }
+.st-idle{ opacity:.7; }
+
+/* Submission panel */
+.subm{ border:1px solid var(--SEL_BG); border-radius:8px; padding:8px 12px; margin:7px 0; font-size:12px; line-height:1.55; }
+.subm .t { font-weight:700; }
+.subm.ok{ border-left:3px solid var(--GREEN); }
+.subm.part{ border-left:3px solid var(--ORANGE); }
+.subm.fail{ border-left:3px solid var(--RED); }
+
+/* Log / journal */
+.log{ background:var(--ENTRY_BG); border:1px solid var(--SEL_BG); border-radius:8px; padding:9px 12px;
+  font-family:Consolas,'Courier New',monospace; font-size:11.5px; line-height:1.7; max-height:190px; overflow-y:auto; }
+.log .ok{ color:var(--GREEN); } .log .warn{ color:var(--ORANGE); } .log .err{ color:var(--RED); }
+.log .info{ color:var(--ACCENT); }
+
+/* CM cards, chips, QR */
+.card{ border:1px solid var(--SEL_BG); border-radius:9px; padding:10px 13px; background:var(--ENTRY_BG); margin:7px 0; }
+.chip{ display:inline-flex; align-items:center; gap:6px; background:var(--ENTRY_BG); border:1px solid var(--SEL_BG);
+  border-radius:20px; padding:4px 12px; font-size:12px; margin:3px 4px 3px 0; }
+.chip .dot{ width:8px; height:8px; border-radius:50%; background:var(--GREEN); }
+.chip.off .dot{ background:var(--RED); }
+.grid2{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.grid2-uneven{ display:grid; grid-template-columns:1.2fr 0.8fr; gap:12px; }
+
+.qr{ width:132px; height:132px; background:#fff; border-radius:6px; padding:8px;
+  display:grid; grid-template-columns:repeat(11,1fr); grid-template-rows:repeat(11,1fr); gap:1px; }
+.qr i{ background:#111; border-radius:1px; }
+.qr i.w{ background:#fff; }
+.phone{ border:2px solid var(--SEL_BG); border-radius:16px; padding:12px; width:230px; background:var(--ENTRY_BG); }
+.phone .notif{ background:var(--SEL_BG); border-radius:9px; padding:9px 11px; font-size:11px; line-height:1.5; margin-top:9px; }
+.phone .notif b{ color:var(--ORANGE); }
+
+.theme-card{ border:2px solid var(--SEL_BG); border-radius:9px; padding:9px 11px; cursor:pointer; background:var(--ENTRY_BG); }
+.theme-card.active{ border-color:var(--ACCENT); }
+.theme-card .sw{ display:flex; gap:4px; margin-top:6px; }
+.theme-card .sw i{ width:22px; height:14px; border-radius:3px; }
+.theme-card .nm{ font-weight:700; font-size:12px; }
+.theme-card .ds{ font-size:10.5px; opacity:.7; line-height:1.4; margin-top:3px; }
+.themes{ display:grid; grid-template-columns:repeat(5,1fr); gap:8px; }
+
+/* Seasonal cards */
+.season{ border:1px solid var(--SEL_BG); border-left:4px solid var(--ACCENT); border-radius:9px; padding:10px 13px; margin:8px 0; background:var(--ENTRY_BG); }
+.season.locked{ border-left-color:var(--ORANGE); }
+.season .hd{ display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; }
+.season .nm{ font-weight:700; font-size:13px; }
+.badge{ font-size:10px; font-weight:700; border-radius:12px; padding:2px 10px; }
+.badge.on{ background:var(--GREEN); color:#11111b; }
+.badge.lock{ background:var(--ORANGE); color:#11111b; }
+
+/* Statusbar / modal / toast */
+.statusbar{ display:flex; justify-content:space-between; background:var(--SEL_BG);
+  padding:4px 12px; font-size:10.5px; color:var(--FG); opacity:.85; }
+
+.modal-overlay{ position:fixed; inset:0; background:rgba(0,0,0,.6); display:none;
+  align-items:center; justify-content:center; z-index:50; }
+.modal-overlay.open{ display:flex; }
+.modal{ background:var(--BG); border:1.5px solid var(--ACCENT); border-radius:12px;
+  max-width:520px; width:92%; padding:20px 22px; line-height:1.6; font-size:12.5px; max-height:82vh; overflow-y:auto; }
+.modal h3{ color:var(--ACCENT); margin-bottom:10px; font-size:15px; }
+.modal .m-actions{ margin-top:14px; text-align:right; }
+.modal img{ width:180px; display:block; margin:0 auto 10px; background:#fff; border-radius:8px; padding:6px; }
+
+.toast{ position:fixed; bottom:22px; left:50%; transform:translateX(-50%) translateY(80px);
+  background:var(--ACCENT); color:var(--BG); font-weight:700; padding:10px 22px; border-radius:9px;
+  transition:transform .25s ease; z-index:60; }
+.toast.show{ transform:translateX(-50%) translateY(0); }
