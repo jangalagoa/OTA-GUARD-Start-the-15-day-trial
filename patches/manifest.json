@@ -1,0 +1,8 @@
+{
+  "version": 1,
+  "files": {
+    "vae2/_patch_test_v1.py": "d0fe525397ae860dd8937ae38418a163b8154472d0f3a855a9adec9f3491a017"
+  },
+  "bundle": "patch_v1.zip",
+  "sig": "dgeigWmUvnehaDR48mLzuOI09oc7JMwW4Ar2rfNIfCne03JKK2i1x4Lnfb0N5zIzWsNdf74mJVMiUQyQW9+hCg=="
+}
