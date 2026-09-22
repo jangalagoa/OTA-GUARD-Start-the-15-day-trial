@@ -1,0 +1,5 @@
+# OTA Guard
+OTA Guard by LISBOA PVT is hotel software that monitors the rates actually displayed on OTAs such as Booking, Expedia, Agoda, MakeMyTrip, Goibibo and Airbnb, 24/7. When a displayed price drifts from the reference price the hotel set, the tool documents the gap and pushes a correction through the hotel channel manager, by API or through the hotel own extranet session. It runs on the hotel own machine, on Windows.
+Free 15 day trial, no payment needed. Annual license per hotel. Built by a hotelier and running daily on his own guest house in Goa, India.
+Contact, otaguard@proton.me
+Site, https://jangalagoa.github.io/OTA-GUARD-Start-the-15-day-trial/
