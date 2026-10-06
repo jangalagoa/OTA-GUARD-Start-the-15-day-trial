@@ -1,8 +1,19 @@
 {
-  "version": 1,
+  "version": 2,
   "files": {
-    "vae2/_patch_test_v1.py": "d0fe525397ae860dd8937ae38418a163b8154472d0f3a855a9adec9f3491a017"
+    "diagnostic/__init__.py": "db27f6f2f222a53163c4f3d90cd5b0e6a214dd56b2ef02551415929db1752607",
+    "diagnostic/masker.py": "4b0f92cb8ac83a19c407c2964e81ef63f3a5d8938dbb407d286851b8139836d1",
+    "diagnostic/recorder.py": "93b523979e81a6cd97032fde07293a6557161d8e0ae5b3d61aa2e6dce2decdba",
+    "diagnostic/collect.py": "dfa91ad6454085c2433187c916bbcc1ffdc7753dd78f8efb1bbc7977e73eed65",
+    "diagnostic/detective.py": "3a894c05815dbb8ed6d6c2d32c5e51e81fcb7d43668d4a79824c02cbf4cc8ebf",
+    "diagnostic/report.py": "399309bd89ebfc67c14fa71615c817a548517c41a951269f2851ecbb01bc7146",
+    "diagnostic/bundle.py": "44a62560b06a526002d8dd48ab172c3b7302f6dc87d9f5afd27cf15028a221ca",
+    "diagnostic/ui.py": "7e299d9c71466a9ddf8e4ec4a2c5e669e738d32a0c8847bce53aa788814aa611",
+    "extranet_bridge.py": "e7e2e5355798646b674465b7007eb045b24ed1bf915d9f9418b310b59a3ad318",
+    "vae2/executor.py": "6b0cefeb22b1cfdb1d971e345fde8a313abe1cb1cec8b003524ad1331de37232",
+    "tabs/tab_blocage_ota.py": "4b661725115bfbf12e98da40fc8bab5764d3f7a27df2cf38ec15e96f5322f510",
+    "tabs/tab_analysis.py": "cad4fca5c8d550cde70c5558f2ba91871e4f135c956176ff6b7249389f3bb819"
   },
-  "bundle": "patch_v1.zip",
-  "sig": "m2zN69ibHy6MePiifLCTrhARkxjRF8MaDwEhC9WzEGTXP3tjk8TAL3MuSvRk/nNu1ihdNsYYSaeoYg/00+aNBA=="
+  "sig": "wcewTFfv5boxvi+V1t93dhL/gQv+9dpwj3TpPq0aWMXo/FdtlplmQKj2/qRG8jKQHh6TjlfBvp4zXa1V0QcGDw==",
+  "bundle": "patch_v2.zip"
 }
