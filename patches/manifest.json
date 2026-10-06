@@ -1,5 +1,5 @@
 {
-  "version": 2,
+  "version": 3,
   "files": {
     "diagnostic/__init__.py": "db27f6f2f222a53163c4f3d90cd5b0e6a214dd56b2ef02551415929db1752607",
     "diagnostic/masker.py": "4b0f92cb8ac83a19c407c2964e81ef63f3a5d8938dbb407d286851b8139836d1",
@@ -12,8 +12,9 @@
     "extranet_bridge.py": "e7e2e5355798646b674465b7007eb045b24ed1bf915d9f9418b310b59a3ad318",
     "vae2/executor.py": "6b0cefeb22b1cfdb1d971e345fde8a313abe1cb1cec8b003524ad1331de37232",
     "tabs/tab_blocage_ota.py": "4b661725115bfbf12e98da40fc8bab5764d3f7a27df2cf38ec15e96f5322f510",
-    "tabs/tab_analysis.py": "cad4fca5c8d550cde70c5558f2ba91871e4f135c956176ff6b7249389f3bb819"
+    "tabs/tab_analysis.py": "cad4fca5c8d550cde70c5558f2ba91871e4f135c956176ff6b7249389f3bb819",
+    "business/activity_log.py": "b14800fd0013370cbc6e583cdbd816300818f8c62c7efaf573f023a4b7044154"
   },
-  "sig": "wcewTFfv5boxvi+V1t93dhL/gQv+9dpwj3TpPq0aWMXo/FdtlplmQKj2/qRG8jKQHh6TjlfBvp4zXa1V0QcGDw==",
-  "bundle": "patch_v2.zip"
+  "sig": "oTAwm9EdROtwOZp1eh7+vOtRP5yoyd399jF/CGxZdYAaDs633mdz3+twzgFmiCJ7tiA7euYHxmnWWhQU0DSTAw==",
+  "bundle": "patch_v3.zip"
 }
