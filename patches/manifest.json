@@ -1,20 +1,11 @@
 {
-  "version": 4,
+  "version": 5,
   "files": {
-    "diagnostic/__init__.py": "db27f6f2f222a53163c4f3d90cd5b0e6a214dd56b2ef02551415929db1752607",
-    "diagnostic/masker.py": "4b0f92cb8ac83a19c407c2964e81ef63f3a5d8938dbb407d286851b8139836d1",
-    "diagnostic/recorder.py": "93b523979e81a6cd97032fde07293a6557161d8e0ae5b3d61aa2e6dce2decdba",
-    "diagnostic/collect.py": "dfa91ad6454085c2433187c916bbcc1ffdc7753dd78f8efb1bbc7977e73eed65",
-    "diagnostic/detective.py": "3a894c05815dbb8ed6d6c2d32c5e51e81fcb7d43668d4a79824c02cbf4cc8ebf",
-    "diagnostic/report.py": "399309bd89ebfc67c14fa71615c817a548517c41a951269f2851ecbb01bc7146",
-    "diagnostic/bundle.py": "703a3d4f521fef17db9679b232b1608df27277c49a298d6503f8691353e3d7de",
-    "diagnostic/ui.py": "7e299d9c71466a9ddf8e4ec4a2c5e669e738d32a0c8847bce53aa788814aa611",
-    "extranet_bridge.py": "aea939d435835fc3ec75ff307b3340be2971bdbe62258697240c081ed2e177d9",
-    "vae2/executor.py": "517d96934908d23a74ddc50dfa5348ae03b7f917adeaca9937adddd18abfddc1",
-    "tabs/tab_blocage_ota.py": "5571a1dfe4035ce79be973c9deac3be8397902efb81c746f9f650377552a0daf",
-    "tabs/tab_analysis.py": "cad4fca5c8d550cde70c5558f2ba91871e4f135c956176ff6b7249389f3bb819",
-    "business/activity_log.py": "b14800fd0013370cbc6e583cdbd816300818f8c62c7efaf573f023a4b7044154"
+    "vae_bridge.py": "a384bc770e90fac864ad388ab10ea7d99698778b36ee6469a34a1c324bb6a7a7",
+    "core/send_history.py": "9264a604772882aa60bb0ca906e5a5358b95363e82f75a563deccda6fe941b5b",
+    "vae2/scanner.py": "990c844ff6f39eb160aa2206cb142ba916402d9c8b5af1e98affb7ccd3c0ddd8",
+    "extranet_bridge.py": "d5fe4078b1c66fe7156d0ee769d7430f4ab179d9cdf36a3266ae6c0cfeb41174"
   },
-  "sig": "7NIfGKFfuTsPpmc5z8/mIsLRST3STEu+5zvuX7redRIgV1AhN4qx692nMlOa7nXq1ozOpVID06EaB12kwHEUDg==",
-  "bundle": "patch_v4.zip"
+  "sig": "iBvL5F4IcnJY0WYtpqRedGK8hA+aYPd105D9BBsYS1db0q7zcn2hAvH4xaCPdrkfLhrT1MIb+GNgZrRqcVUpCg==",
+  "bundle": "patch_v5.zip"
 }
