@@ -1,12 +1,12 @@
 {
-  "version": 6,
+  "version": 7,
   "files": {
-    "vae_bridge.py": "a384bc770e90fac864ad388ab10ea7d99698778b36ee6469a34a1c324bb6a7a7",
+    "vae_bridge.py": "bd4200f0f96997f473393631fe012ca33841be855232835728ef37fad9cee070",
     "core/send_history.py": "9264a604772882aa60bb0ca906e5a5358b95363e82f75a563deccda6fe941b5b",
-    "vae2/scanner.py": "990c844ff6f39eb160aa2206cb142ba916402d9c8b5af1e98affb7ccd3c0ddd8",
-    "extranet_bridge.py": "126f14695d085ea5838b7c4171a3483b137dfce93641f745f1feb44da9223f1c",
+    "vae2/scanner.py": "8360af447b4d0406b00c54b7d57891cf68e9951324c6a6f8e98ebe5438c41f4f",
+    "extranet_bridge.py": "7a9f346f2f2581e001ce9f33251d6ad19378e2c4b4d1a492de5dd3adebb3fdc2",
     "tabs/tab_extranet_direct.py": "0be10044b681e011f1717f4b64a83091e39434f4157676e660ba6d514746a3c5"
   },
-  "sig": "PBWJsNSn2t0hEduV4wmqdkLrdN9imj1hoZgUHpceT1HS23sZAuAaGKGS9azhodgDMfAWhKgnkWD4Fa1vOBqPBQ==",
-  "bundle": "patch_v6.zip"
+  "sig": "gddTaU2F3ZsDq76Al5dt1LsXTRpWcImvSv3exm+DvIbX3uYQyJFxQTB6L4RTuLUqcruhWwpDhCQ0D+NgVN7nCw==",
+  "bundle": "patch_v7.zip"
 }
