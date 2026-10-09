@@ -1,12 +1,12 @@
 {
-  "version": 7,
+  "version": 8,
   "files": {
-    "vae_bridge.py": "bd4200f0f96997f473393631fe012ca33841be855232835728ef37fad9cee070",
-    "core/send_history.py": "9264a604772882aa60bb0ca906e5a5358b95363e82f75a563deccda6fe941b5b",
-    "vae2/scanner.py": "8360af447b4d0406b00c54b7d57891cf68e9951324c6a6f8e98ebe5438c41f4f",
-    "extranet_bridge.py": "7a9f346f2f2581e001ce9f33251d6ad19378e2c4b4d1a492de5dd3adebb3fdc2",
-    "tabs/tab_extranet_direct.py": "0be10044b681e011f1717f4b64a83091e39434f4157676e660ba6d514746a3c5"
+    "vae_bridge.py": "044c74750455bf1d63b1902f1a9d062f9be8c8aa60819e8a27aa2b45c49c3148",
+    "extranet_bridge.py": "7494fb934b3816e4447884dd64909be4a87fbfbf250771f649d1531a44c8fb62",
+    "app_core.py": "2c1bbcb1aa80633497a5ee67673b3d5c9784df1b63fceb9f9d3d9b7b871bde8e",
+    "tabs/tab_blocage_ota.py": "541f36d8f2a13eb50589dadfcabf9c3b60f0bf74bc6f5c6b2685181414bbf6af",
+    "vae2/executor.py": "165da4e38c066110fe7ffa7b3212a523085a90fdca2386190608d63469bdf00a"
   },
-  "sig": "gddTaU2F3ZsDq76Al5dt1LsXTRpWcImvSv3exm+DvIbX3uYQyJFxQTB6L4RTuLUqcruhWwpDhCQ0D+NgVN7nCw==",
-  "bundle": "patch_v7.zip"
+  "sig": "AaLRQCpONlF0gs23ephglUapzOWYXg6+Z+WlBIT+YbOrOCuLRfsQHJWwwxJ/GXQuYr2qoFlRn1mPJup10ExXDg==",
+  "bundle": "patch_v8.zip"
 }
