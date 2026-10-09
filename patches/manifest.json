@@ -1,12 +1,8 @@
 {
-  "version": 8,
+  "version": 9,
   "files": {
-    "vae_bridge.py": "044c74750455bf1d63b1902f1a9d062f9be8c8aa60819e8a27aa2b45c49c3148",
-    "extranet_bridge.py": "7494fb934b3816e4447884dd64909be4a87fbfbf250771f649d1531a44c8fb62",
-    "app_core.py": "2c1bbcb1aa80633497a5ee67673b3d5c9784df1b63fceb9f9d3d9b7b871bde8e",
-    "tabs/tab_blocage_ota.py": "541f36d8f2a13eb50589dadfcabf9c3b60f0bf74bc6f5c6b2685181414bbf6af",
-    "vae2/executor.py": "165da4e38c066110fe7ffa7b3212a523085a90fdca2386190608d63469bdf00a"
+    "vae_bridge.py": "4cd8f67369592e73bc1e9376ce087b43863edf089c90bdbf3726be568b1159a3"
   },
-  "sig": "AaLRQCpONlF0gs23ephglUapzOWYXg6+Z+WlBIT+YbOrOCuLRfsQHJWwwxJ/GXQuYr2qoFlRn1mPJup10ExXDg==",
-  "bundle": "patch_v8.zip"
+  "sig": "2LLUWnZRdrxoUvfEmwSjTFsfG7fBJmyfWKfJoOCfFn/UrwQA/PcBx4FNjlU9kbpwmgqp8uVZsv/xOL6kKQX8Dw==",
+  "bundle": "patch_v9.zip"
 }
