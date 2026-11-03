@@ -1,5 +1,5 @@
 {
-  "version": 36,
+  "version": 37,
   "files": {
     "about.py": "68d54b58384867120f8bc7f1b534251abde278b1d3a21b3f4cb787b9943a7836",
     "app.py": "0e67d7e51751c8caeff7aa97e1ed16d166812f4ca67b09a563704ded60471dfe",
@@ -28,7 +28,7 @@
     "core/calib_store.py": "4bac731c18c5687ac66f46d85b34c605de0b53f637630eed28ea0e194f82bd99",
     "core/i18n_overrides.py": "1eb0bfe7e716a5c30ab0781e861deb16614d635eb5fe99df7f127cd47273ae84",
     "core/ota_selection.py": "a0ad443a960363763b056c5f8d92541549c0ab9657f9186452d4d1c23266d00f",
-    "core/patch_loader.py": "70ee453801b92cb2c3a34aa7ccd4a5e0de0fab3f0372a9b4497822ad7b135651",
+    "core/patch_loader.py": "88dcc1c3765a252769ac433f57db244b3873088430b2bf1b5a94fe581a096f25",
     "core/room_match.py": "c0db9ba20489a2f7ec546a83dfe68ba8abfc1b2a5163d90d49b44b9eb2a457a9",
     "core/room_names.py": "6cfb0c6b7b301899206790eff222d79a1fef84f9cfb014efa5a81ded38f5a466",
     "core/scan_context.py": "d32f19ebd7690228a72bf38565dcd290aefa65b886d6ba1d7462241eb09c4b15",
@@ -104,6 +104,6 @@
     "vae/src/extractors/currency_converter.py": "81eaea8ab964c62319c626181ca6a11620b0df7a97aa21f718f65581b3246f42",
     "vae/src/extractors/auto_mapping_generator.py": "49e0e2ee7e637c1621b188e30e3413e4d9dd7cfaa02676b4856cde958b65ba07"
   },
-  "sig": "ClAD+t4HcWgJJuiIcoKyUu5+5ZKPMYEiO2UurxfiZhXAflq1RSsmwO538xNjAI+pugNylv/WrK7A2oWthcsTDQ==",
-  "bundle": "patch_v36.zip"
+  "sig": "Aux5zxw9RNfaCgO/wp/ReL8lswVEdeQVHwFO7bERSgtmVQm9sxZURBHJv2ukWU0e3A1NBj69JMEv3+7NoyRzCA==",
+  "bundle": "patch_v37.zip"
 }
